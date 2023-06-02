@@ -9,6 +9,12 @@ module.exports = {
     })
     // Il manque quelque chose ici...  A vous de l'ajouter !
     // Indice : vous aurez besoin de await queryInterface.sequelize.query(...)
+    await queryInterface.Sequelize.query(
+      `UPDATE todos SET status = 'EN RETARD' WHERE id = ?` ,
+      {
+        replacements: [job.data.idTodo]
+      }
+    )
   },
 
   async down(queryInterface, Sequelize) {
