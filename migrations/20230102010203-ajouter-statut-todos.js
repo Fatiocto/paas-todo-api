@@ -7,8 +7,13 @@ module.exports = {
       defaultValue: "EN_COURS",
       allowNull: false,
     });
+
     // Il manque quelque chose ici...  A vous de l'ajouter !
     // Indice : vous aurez besoin de await queryInterface.sequelize.query(...)
+
+    await queryInterface.sequelize.query(
+      `UPDATE todos SET statut = 'EN_RETARD' WHERE date_echeance < now()`
+    )
   },
 
   async down(queryInterface, Sequelize) {
